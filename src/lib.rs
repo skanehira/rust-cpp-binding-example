@@ -39,7 +39,7 @@ pub unsafe extern "C" fn todo_free(o: *mut Todo) {
 pub unsafe extern "C" fn free_string(s: *mut c_char) {
     if !s.is_null() {
         unsafe {
-            let _ = Box::from_raw(s);
+            let _ = CString::from_raw(s);
         }
     }
 }
