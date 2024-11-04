@@ -1,4 +1,4 @@
-use std::ffi::{CStr, CString};
+use std::ffi::CString;
 use std::os::raw::c_char;
 
 #[derive(Debug, PartialEq, Clone, Default, Copy)]
@@ -39,7 +39,7 @@ pub unsafe extern "C" fn todo_free(o: *mut Todo) {
 pub unsafe extern "C" fn free_string(s: *mut c_char) {
     if !s.is_null() {
         unsafe {
-            let _ = CStr::from_ptr(s);
+            let _ = Box::from_raw(s);
         }
     }
 }

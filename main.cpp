@@ -11,11 +11,10 @@ int main() {
   std::cout << "Todo Status: " << status << std::endl;
   std::cout << "Todo Title: " << todo->title << std::endl;
 
-  bool completed = is_completed(todo);
+	change_status(todo, TodoStatus::Completed);
 
-  std::cout << "Todo Completed: " << (completed ? "Yes" : "No") << std::endl;
+  std::cout << "Todo Completed: " << (is_completed(todo) ? "Yes" : "No") << std::endl;
 
-	// FIXME: なぜかメモリ解放されずメモリリークする
   free_string(status);
   todo_free(todo);
 

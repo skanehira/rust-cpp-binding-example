@@ -18,4 +18,4 @@ clean:
 	@rm -f $(TARGET)
 
 run: $(TARGET)
-	@valgrind --leak-check=full ./main
+	valgrind -s --leak-check=full ./main
